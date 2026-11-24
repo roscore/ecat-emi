@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'self'; style-src 'self'; img-src 'self' data: blob:">
+<title>ecat-emi</title>
+<link data-trunk rel="css" href="style.css">
+<link data-trunk rel="rust" href="crates/ee_web/Cargo.toml" data-wasm-opt="z">
+</head>
+<body>
+<header>
+  <b>ecat-emi</b> <span data-t="subtitle"></span>
+  <span class="notice" data-t="privacy"></span>
+  <button id="lang" type="button">EN</button>
+</header>
+<div id="wrap">
+<aside id="left">
+  <section id="load">
+    <h3 data-t="h_load"></h3>
+    <input id="file" type="file" multiple accept=".kicad_pcb,.zip,.gbr,.gtl,.gbl,.g1,.g2,.g3,.g4,.drl,.xln,.txt">
+    <button id="sample" type="button" data-t="sample"></button>
+    <p class="hint" data-t="drop"></p>
+    <div id="err" class="err" hidden></div>
+    <div id="info" class="hint"></div>
+    <div id="gfiles"></div>
+  </section>
+  <section>
+    <h3 data-t="h_roles"></h3>
+    <div id="pick" class="hint" data-t="pick_hint"></div>
+    <div id="roles"></div>
+  </section>
+  <section class="params">
+    <h3 data-t="h_aggr"></h3>
+    <label><span data-t="k_vbus"></span><input data-k="vbus" type="number" min="12" max="100" step="1"></label><label><span data-t="k_tr"></span><input data-k="tr" type="number" min="5" max="500" step="1"></label><label><span data-t="k_iph"></span><input data-k="iph" type="number" min="0" max="60" step="1"></label><label><span data-t="k_fpwm"></span><input data-k="fpwm" type="number" min="4" max="100" step="1"></label><label><span data-t="k_csw"></span><input data-k="csw" type="number" min="10" max="20000" step="10"></label>
+    <p class="hint" data-t="preset_hint"></p>
+  </section>
+  <section class="params">
+    <h3 data-t="h_link"></h3>
+    <label><span data-t="k_lcl"></span><input data-k="lcl" type="number" min="-60" max="-25" step="1"></label><label><span data-t="k_cmrr"></span><input data-k="cmrr" type="number" min="0" max="60" step="1"></label><label><span data-t="k_len"></span><input data-k="len" type="number" min="0" max="100" step="1"></label><label><span data-t="k_frame"></span><input data-k="frame" type="number" min="64" max="1518" step="1"></label><label><span data-t="k_cycle"></span><input data-k="cycle" type="number" min="125" max="4000" step="1"></label><label><span data-t="k_floor"></span><input data-k="floor" type="number" min="1" max="100" step="1"></label>
+  </section>
+  <details class="params">
+    <summary data-t="h_cable"></summary>
+    <label><span data-t="k_b2b"></span><input data-k="b2b" type="number" min="0" max="5" step="0.1"></label><label><span data-t="k_sep"></span><input data-k="sep" type="number" min="1" max="500" step="1"></label>
+    <label><span data-t="k_shd"></span><select data-k="shd"><option value="0" data-t="o_none"></option><option value="1" data-t="o_foil"></option><option value="2" data-t="o_braid"></option></select></label>
+    <label><span data-t="k_gnd"></span><select data-k="gnd"><option value="0" data-t="o_none"></option><option value="1" data-t="o_one"></option><option value="2" data-t="o_both"></option></select></label>
+    <label><span data-t="k_fer"></span><input data-k="fer" type="number" min="0" max="1000" step="10"></label>
+  </details>
+</aside>
+<main id="view">
+  <canvas id="gl"></canvas>
+  <canvas id="c2d" hidden></canvas>
+  <div id="tip" hidden></div>
+  <div id="empty" class="hint" data-t="empty"></div>
+  <div id="tools">
+    <button type="button" data-view="0" data-t="v_iso"></button>
+    <button type="button" data-view="1" data-t="v_top"></button>
+    <button type="button" data-view="2" data-t="v_bottom"></button>
+    <label><input id="xray" type="checkbox"> <span data-t="xray"></span></label>
+    <label><span data-t="k_exag"></span> <input data-k="exag" type="range" min="1" max="20" step="0.5"></label>
+    <label><span data-t="opacity"></span> <input id="opacity" type="range" min="0.1" max="1" step="0.05" value="1"></label>
+    <span id="layers"></span>
+    <button id="reset" type="button" data-t="reset"></button>
+    <span class="hint" data-t="drag_hint"></span>
+  </div>
+  <div id="fallback" class="hint" data-t="fallback" hidden></div>
+</main>
+<aside id="right">
+  <div id="cards"></div>
+  <h3 data-t="h_spec"></h3><canvas id="spec" width="360" height="190"></canvas>
+  <h3 data-t="h_eye"></h3><canvas id="eye" width="360" height="150"></canvas>
+  <h3 data-t="h_burst"></h3><canvas id="burst" width="360" height="110"></canvas>
+  <div class="row"><button id="md" type="button" data-t="export_md"></button> <button id="csv" type="button" data-t="export_csv"></button></div>
+  <p class="hint" data-t="honesty"></p>
+</aside>
+</div>
+</body>
+</html>

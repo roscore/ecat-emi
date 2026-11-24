@@ -1,0 +1,10 @@
+[build]
+target = "index.html"
+dist = "dist"
+public_url = "/ecat-emi/"
+filehash = false
+
+[[hooks]]
+stage = "post_build"
+command = "bash"
+command_arguments = ["tools/externalize_boot.sh"]

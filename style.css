@@ -1,0 +1,36 @@
+*{box-sizing:border-box}
+body{margin:0;font:13px/1.4 system-ui,sans-serif;background:#12151b;color:#dde3ea;height:100vh;display:flex;flex-direction:column}
+header{display:flex;gap:12px;align-items:center;padding:6px 12px;background:#1b2029;border-bottom:1px solid #2c3340}
+header .notice{margin-left:auto;color:#8fd19e;font-size:12px}
+#wrap{flex:1;display:flex;min-height:0}
+aside{width:300px;overflow:auto;padding:8px 10px;background:#171b22}
+#right{width:390px}
+main{flex:1;position:relative;min-width:0}
+main canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+h3{margin:10px 0 4px;font-size:13px;color:#9fb3c8}
+section,details{border-bottom:1px solid #2a303b;padding-bottom:6px}
+label{display:flex;justify-content:space-between;gap:6px;margin:2px 0;align-items:center}
+.params input[type=number]{width:84px}
+input,select,button{background:#232a35;color:#dde3ea;border:1px solid #3a4352;border-radius:4px;padding:2px 6px;font:inherit}
+button{cursor:pointer}
+button:hover{background:#2e3745}
+.hint{color:#8a96a6;font-size:12px}
+.err{color:#ff8a80;white-space:pre-wrap;margin:4px 0}
+#tools{position:absolute;left:8px;top:8px;right:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:#171b22cc;padding:4px 6px;border-radius:6px}
+#tools label{margin:0}
+#tip{position:absolute;pointer-events:none;background:#000c;padding:4px 8px;border-radius:4px;white-space:pre}
+#empty,#fallback{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center}
+#fallback{top:auto;bottom:10px;transform:translateX(-50%)}
+.card{border-left:6px solid #888;background:#1d222b;padding:6px 8px;margin:6px 0;cursor:pointer}
+.card.sel{outline:1px solid #6aa9ff}
+.card.ok{border-color:#3ecf6e}.card.marginal{border-color:#f0c040}.card.fail{border-color:#ff5050}
+.card b.v{float:right}
+.card ol{margin:4px 0 0 16px;padding:0}
+.card li{cursor:pointer}.card li:hover{text-decoration:underline}
+.role{display:flex;gap:4px;align-items:center;margin:2px 0;flex-wrap:wrap}
+.role input[type=number]{width:58px}
+.role .name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px}
+.sw.v{background:#33e65a}.sw.a{background:#ff8c1a}
+canvas#spec,canvas#eye,canvas#burst{width:100%;background:#0e1116;border-radius:4px}
+.row{margin:8px 0}

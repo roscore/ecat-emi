@@ -1,0 +1,10 @@
+[package]
+name = "ee_core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "EtherCAT EMI coupling model"
+
+[dependencies]
+miniz_oxide = { version = "0.8", default-features = false, features = ["with-alloc"] }
